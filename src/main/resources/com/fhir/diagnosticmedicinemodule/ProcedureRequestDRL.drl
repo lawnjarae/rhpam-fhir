@@ -1,0 +1,8 @@
+package com.fhir.diagnosticmedicinemodule;
+
+rule "Print Procedure Report"
+when
+    $pr: ProcedureReport()
+then
+    System.out.println($pr.toString());
+end
