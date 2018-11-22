@@ -1,8 +1,10 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -16,56 +18,56 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "low",
-    "high"
+    "coding",
+    "text"
 })
-public class ReferenceRange implements Serializable
+public class Code implements Serializable
 {
 
-    @JsonProperty("low")
-    private Low low;
-    @JsonProperty("high")
-    private High high;
+    @JsonProperty("coding")
+    private List<Coding> coding = new ArrayList<Coding>();
+    @JsonProperty("text")
+    private String text;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -2045576881704706620L;
+    private final static long serialVersionUID = 3161806457710657733L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public ReferenceRange() {
+    public Code() {
     }
 
     /**
      * 
-     * @param high
-     * @param low
+     * @param text
+     * @param coding
      */
-    public ReferenceRange(Low low, High high) {
+    public Code(List<Coding> coding, String text) {
         super();
-        this.low = low;
-        this.high = high;
+        this.coding = coding;
+        this.text = text;
     }
 
-    @JsonProperty("low")
-    public Low getLow() {
-        return low;
+    @JsonProperty("coding")
+    public List<Coding> getCoding() {
+        return coding;
     }
 
-    @JsonProperty("low")
-    public void setLow(Low low) {
-        this.low = low;
+    @JsonProperty("coding")
+    public void setCoding(List<Coding> coding) {
+        this.coding = coding;
     }
 
-    @JsonProperty("high")
-    public High getHigh() {
-        return high;
+    @JsonProperty("text")
+    public String getText() {
+        return text;
     }
 
-    @JsonProperty("high")
-    public void setHigh(High high) {
-        this.high = high;
+    @JsonProperty("text")
+    public void setText(String text) {
+        this.text = text;
     }
 
     @JsonAnyGetter
@@ -80,12 +82,12 @@ public class ReferenceRange implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("low", low).append("high", high).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("coding", coding).append("text", text).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(high).append(low).toHashCode();
+        return new HashCodeBuilder().append(text).append(additionalProperties).append(coding).toHashCode();
     }
 
     @Override
@@ -93,11 +95,11 @@ public class ReferenceRange implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof ReferenceRange) == false) {
+        if ((other instanceof Code) == false) {
             return false;
         }
-        ReferenceRange rhs = ((ReferenceRange) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(high, rhs.high).append(low, rhs.low).isEquals();
+        Code rhs = ((Code) other);
+        return new EqualsBuilder().append(text, rhs.text).append(additionalProperties, rhs.additionalProperties).append(coding, rhs.coding).isEquals();
     }
 
 }

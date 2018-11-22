@@ -1,5 +1,5 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,41 +16,41 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "agent"
+    "reference"
 })
-public class Requester implements Serializable
+public class Context implements Serializable
 {
 
-    @JsonProperty("agent")
-    private Agent agent;
+    @JsonProperty("reference")
+    private String reference;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 1434905566902402012L;
+    private final static long serialVersionUID = -8489596499365523574L;
 
     /**
      * No args constructor for use in serialization
-     *
+     * 
      */
-    public Requester() {
+    public Context() {
     }
 
     /**
-     *
-     * @param agent
+     * 
+     * @param reference
      */
-    public Requester(Agent agent) {
+    public Context(String reference) {
         super();
-        this.agent = agent;
+        this.reference = reference;
     }
 
-    @JsonProperty("agent")
-    public Agent getAgent() {
-        return agent;
+    @JsonProperty("reference")
+    public String getReference() {
+        return reference;
     }
 
-    @JsonProperty("agent")
-    public void setAgent(Agent agent) {
-        this.agent = agent;
+    @JsonProperty("reference")
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     @JsonAnyGetter
@@ -65,12 +65,12 @@ public class Requester implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("agent", agent).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("reference", reference).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(agent).toHashCode();
+        return new HashCodeBuilder().append(additionalProperties).append(reference).toHashCode();
     }
 
     @Override
@@ -78,11 +78,11 @@ public class Requester implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Requester) == false) {
+        if ((other instanceof Context) == false) {
             return false;
         }
-        Requester rhs = ((Requester) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(agent, rhs.agent).isEquals();
+        Context rhs = ((Context) other);
+        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(reference, rhs.reference).isEquals();
     }
 
 }

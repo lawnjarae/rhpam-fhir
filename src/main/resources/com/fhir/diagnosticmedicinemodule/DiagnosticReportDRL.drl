@@ -1,4 +1,4 @@
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 rule "Print Diagnostic Report"
 when

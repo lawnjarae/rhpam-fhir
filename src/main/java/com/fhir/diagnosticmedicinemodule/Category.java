@@ -1,8 +1,10 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -16,41 +18,41 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "reference"
+    "coding"
 })
-public class Context implements Serializable
+public class Category implements Serializable
 {
 
-    @JsonProperty("reference")
-    private String reference;
+    @JsonProperty("coding")
+    private List<Coding> coding = new ArrayList<Coding>();
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -8489596499365523574L;
+    private final static long serialVersionUID = 2129681584992437985L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Context() {
+    public Category() {
     }
 
     /**
      * 
-     * @param reference
+     * @param coding
      */
-    public Context(String reference) {
+    public Category(List<Coding> coding) {
         super();
-        this.reference = reference;
+        this.coding = coding;
     }
 
-    @JsonProperty("reference")
-    public String getReference() {
-        return reference;
+    @JsonProperty("coding")
+    public List<Coding> getCoding() {
+        return coding;
     }
 
-    @JsonProperty("reference")
-    public void setReference(String reference) {
-        this.reference = reference;
+    @JsonProperty("coding")
+    public void setCoding(List<Coding> coding) {
+        this.coding = coding;
     }
 
     @JsonAnyGetter
@@ -65,12 +67,12 @@ public class Context implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("reference", reference).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("coding", coding).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(reference).toHashCode();
+        return new HashCodeBuilder().append(additionalProperties).append(coding).toHashCode();
     }
 
     @Override
@@ -78,11 +80,11 @@ public class Context implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Context) == false) {
+        if ((other instanceof Category) == false) {
             return false;
         }
-        Context rhs = ((Context) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(reference, rhs.reference).isEquals();
+        Category rhs = ((Category) other);
+        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(coding, rhs.coding).isEquals();
     }
 
 }

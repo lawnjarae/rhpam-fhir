@@ -1,5 +1,5 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,41 +16,56 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "reference"
+    "status",
+    "div"
 })
-public class Subject implements Serializable
+public class Text implements Serializable
 {
 
-    @JsonProperty("reference")
-    private String reference;
+    @JsonProperty("status")
+    private String status;
+    @JsonProperty("div")
+    private String div;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -6259332557263717208L;
+    private final static long serialVersionUID = 613565313977382251L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Subject() {
+    public Text() {
     }
 
     /**
      * 
-     * @param reference
+     * @param status
+     * @param div
      */
-    public Subject(String reference) {
+    public Text(String status, String div) {
         super();
-        this.reference = reference;
+        this.status = status;
+        this.div = div;
     }
 
-    @JsonProperty("reference")
-    public String getReference() {
-        return reference;
+    @JsonProperty("status")
+    public String getStatus() {
+        return status;
     }
 
-    @JsonProperty("reference")
-    public void setReference(String reference) {
-        this.reference = reference;
+    @JsonProperty("status")
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @JsonProperty("div")
+    public String getDiv() {
+        return div;
+    }
+
+    @JsonProperty("div")
+    public void setDiv(String div) {
+        this.div = div;
     }
 
     @JsonAnyGetter
@@ -65,12 +80,12 @@ public class Subject implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("reference", reference).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("status", status).append("div", div).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(reference).toHashCode();
+        return new HashCodeBuilder().append(status).append(additionalProperties).append(div).toHashCode();
     }
 
     @Override
@@ -78,11 +93,11 @@ public class Subject implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Subject) == false) {
+        if ((other instanceof Text) == false) {
             return false;
         }
-        Subject rhs = ((Subject) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(reference, rhs.reference).isEquals();
+        Text rhs = ((Text) other);
+        return new EqualsBuilder().append(status, rhs.status).append(additionalProperties, rhs.additionalProperties).append(div, rhs.div).isEquals();
     }
 
 }

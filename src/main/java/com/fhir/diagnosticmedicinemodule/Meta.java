@@ -1,5 +1,5 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,41 +18,41 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "coding"
+    "tag"
 })
-public class Interpretation implements Serializable
+public class Meta implements Serializable
 {
 
-    @JsonProperty("coding")
-    private List<Coding> coding = new ArrayList<Coding>();
+    @JsonProperty("tag")
+    private List<Tag> tag = new ArrayList<Tag>();
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 6733743907763872431L;
+    private final static long serialVersionUID = -7259486972747876423L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Interpretation() {
+    public Meta() {
     }
 
     /**
      * 
-     * @param coding
+     * @param tag
      */
-    public Interpretation(List<Coding> coding) {
+    public Meta(List<Tag> tag) {
         super();
-        this.coding = coding;
+        this.tag = tag;
     }
 
-    @JsonProperty("coding")
-    public List<Coding> getCoding() {
-        return coding;
+    @JsonProperty("tag")
+    public List<Tag> getTag() {
+        return tag;
     }
 
-    @JsonProperty("coding")
-    public void setCoding(List<Coding> coding) {
-        this.coding = coding;
+    @JsonProperty("tag")
+    public void setTag(List<Tag> tag) {
+        this.tag = tag;
     }
 
     @JsonAnyGetter
@@ -67,12 +67,12 @@ public class Interpretation implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("coding", coding).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("tag", tag).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(coding).toHashCode();
+        return new HashCodeBuilder().append(additionalProperties).append(tag).toHashCode();
     }
 
     @Override
@@ -80,11 +80,11 @@ public class Interpretation implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Interpretation) == false) {
+        if ((other instanceof Meta) == false) {
             return false;
         }
-        Interpretation rhs = ((Interpretation) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(coding, rhs.coding).isEquals();
+        Meta rhs = ((Meta) other);
+        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(tag, rhs.tag).isEquals();
     }
 
 }

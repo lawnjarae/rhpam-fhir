@@ -1,5 +1,5 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,56 +16,56 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "system",
-    "value"
+    "reference",
+    "display"
 })
-public class Requisition implements Serializable
+public class Agent implements Serializable
 {
 
-    @JsonProperty("system")
-    private String system;
-    @JsonProperty("value")
-    private String value;
+    @JsonProperty("reference")
+    private String reference;
+    @JsonProperty("display")
+    private String display;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -7788549807436696656L;
+    private final static long serialVersionUID = 6033510330432058056L;
 
     /**
      * No args constructor for use in serialization
      *
      */
-    public Requisition() {
+    public Agent() {
     }
 
     /**
      *
-     * @param system
-     * @param value
+     * @param display
+     * @param reference
      */
-    public Requisition(String system, String value) {
+    public Agent(String reference, String display) {
         super();
-        this.system = system;
-        this.value = value;
+        this.reference = reference;
+        this.display = display;
     }
 
-    @JsonProperty("system")
-    public String getSystem() {
-        return system;
+    @JsonProperty("reference")
+    public String getReference() {
+        return reference;
     }
 
-    @JsonProperty("system")
-    public void setSystem(String system) {
-        this.system = system;
+    @JsonProperty("reference")
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
-    @JsonProperty("value")
-    public String getValue() {
-        return value;
+    @JsonProperty("display")
+    public String getDisplay() {
+        return display;
     }
 
-    @JsonProperty("value")
-    public void setValue(String value) {
-        this.value = value;
+    @JsonProperty("display")
+    public void setDisplay(String display) {
+        this.display = display;
     }
 
     @JsonAnyGetter
@@ -80,12 +80,12 @@ public class Requisition implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("system", system).append("value", value).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("reference", reference).append("display", display).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(system).append(additionalProperties).append(value).toHashCode();
+        return new HashCodeBuilder().append(additionalProperties).append(display).append(reference).toHashCode();
     }
 
     @Override
@@ -93,11 +93,11 @@ public class Requisition implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Requisition) == false) {
+        if ((other instanceof Agent) == false) {
             return false;
         }
-        Requisition rhs = ((Requisition) other);
-        return new EqualsBuilder().append(system, rhs.system).append(additionalProperties, rhs.additionalProperties).append(value, rhs.value).isEquals();
+        Agent rhs = ((Agent) other);
+        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(display, rhs.display).append(reference, rhs.reference).isEquals();
     }
 
 }

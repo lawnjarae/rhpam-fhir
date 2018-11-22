@@ -1,5 +1,5 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
     "system",
     "code"
 })
-public class ValueQuantity implements Serializable
+public class Low implements Serializable
 {
 
     @JsonProperty("value")
@@ -34,13 +34,13 @@ public class ValueQuantity implements Serializable
     private String code;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -2702611633019213070L;
+    private final static long serialVersionUID = -4834727056500130791L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public ValueQuantity() {
+    public Low() {
     }
 
     /**
@@ -50,7 +50,7 @@ public class ValueQuantity implements Serializable
      * @param value
      * @param code
      */
-    public ValueQuantity(Double value, String unit, String system, String code) {
+    public Low(Double value, String unit, String system, String code) {
         super();
         this.value = value;
         this.unit = unit;
@@ -123,10 +123,10 @@ public class ValueQuantity implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof ValueQuantity) == false) {
+        if ((other instanceof Low) == false) {
             return false;
         }
-        ValueQuantity rhs = ((ValueQuantity) other);
+        Low rhs = ((Low) other);
         return new EqualsBuilder().append(unit, rhs.unit).append(system, rhs.system).append(additionalProperties, rhs.additionalProperties).append(value, rhs.value).append(code, rhs.code).isEquals();
     }
 

@@ -1,5 +1,5 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,56 +16,56 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "reference",
-    "display"
+    "low",
+    "high"
 })
-public class Agent implements Serializable
+public class ReferenceRange implements Serializable
 {
 
-    @JsonProperty("reference")
-    private String reference;
-    @JsonProperty("display")
-    private String display;
+    @JsonProperty("low")
+    private Low low;
+    @JsonProperty("high")
+    private High high;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 6033510330432058056L;
+    private final static long serialVersionUID = -2045576881704706620L;
 
     /**
      * No args constructor for use in serialization
-     *
+     * 
      */
-    public Agent() {
+    public ReferenceRange() {
     }
 
     /**
-     *
-     * @param display
-     * @param reference
+     * 
+     * @param high
+     * @param low
      */
-    public Agent(String reference, String display) {
+    public ReferenceRange(Low low, High high) {
         super();
-        this.reference = reference;
-        this.display = display;
+        this.low = low;
+        this.high = high;
     }
 
-    @JsonProperty("reference")
-    public String getReference() {
-        return reference;
+    @JsonProperty("low")
+    public Low getLow() {
+        return low;
     }
 
-    @JsonProperty("reference")
-    public void setReference(String reference) {
-        this.reference = reference;
+    @JsonProperty("low")
+    public void setLow(Low low) {
+        this.low = low;
     }
 
-    @JsonProperty("display")
-    public String getDisplay() {
-        return display;
+    @JsonProperty("high")
+    public High getHigh() {
+        return high;
     }
 
-    @JsonProperty("display")
-    public void setDisplay(String display) {
-        this.display = display;
+    @JsonProperty("high")
+    public void setHigh(High high) {
+        this.high = high;
     }
 
     @JsonAnyGetter
@@ -80,12 +80,12 @@ public class Agent implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("reference", reference).append("display", display).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("low", low).append("high", high).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(display).append(reference).toHashCode();
+        return new HashCodeBuilder().append(additionalProperties).append(high).append(low).toHashCode();
     }
 
     @Override
@@ -93,11 +93,11 @@ public class Agent implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Agent) == false) {
+        if ((other instanceof ReferenceRange) == false) {
             return false;
         }
-        Agent rhs = ((Agent) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(display, rhs.display).append(reference, rhs.reference).isEquals();
+        ReferenceRange rhs = ((ReferenceRange) other);
+        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(high, rhs.high).append(low, rhs.low).isEquals();
     }
 
 }

@@ -1,5 +1,5 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,41 +16,41 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "actor"
+    "value"
 })
-public class Performer_ implements Serializable
+public class Identifier implements Serializable
 {
 
-    @JsonProperty("actor")
-    private Actor actor;
+    @JsonProperty("value")
+    private String value;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 7957231763979584456L;
+    private final static long serialVersionUID = 3432002080008295512L;
 
     /**
      * No args constructor for use in serialization
-     * 
+     *
      */
-    public Performer_() {
+    public Identifier() {
     }
 
     /**
-     * 
-     * @param actor
+     *
+     * @param value
      */
-    public Performer_(Actor actor) {
+    public Identifier(String value) {
         super();
-        this.actor = actor;
+        this.value = value;
     }
 
-    @JsonProperty("actor")
-    public Actor getActor() {
-        return actor;
+    @JsonProperty("value")
+    public String getValue() {
+        return value;
     }
 
-    @JsonProperty("actor")
-    public void setActor(Actor actor) {
-        this.actor = actor;
+    @JsonProperty("value")
+    public void setValue(String value) {
+        this.value = value;
     }
 
     @JsonAnyGetter
@@ -65,12 +65,12 @@ public class Performer_ implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("actor", actor).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("value", value).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(actor).toHashCode();
+        return new HashCodeBuilder().append(additionalProperties).append(value).toHashCode();
     }
 
     @Override
@@ -78,11 +78,11 @@ public class Performer_ implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Performer_) == false) {
+        if ((other instanceof Identifier) == false) {
             return false;
         }
-        Performer_ rhs = ((Performer_) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(actor, rhs.actor).isEquals();
+        Identifier rhs = ((Identifier) other);
+        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(value, rhs.value).isEquals();
     }
 
 }

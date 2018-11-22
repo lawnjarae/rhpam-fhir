@@ -1,5 +1,5 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,31 +16,36 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "reference"
+    "reference",
+    "display"
 })
-public class Result implements Serializable
+public class Actor implements Serializable
 {
 
     @JsonProperty("reference")
     private String reference;
+    @JsonProperty("display")
+    private String display;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -2230481255632071575L;
+    private final static long serialVersionUID = -916096935519955356L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Result() {
+    public Actor() {
     }
 
     /**
      * 
+     * @param display
      * @param reference
      */
-    public Result(String reference) {
+    public Actor(String reference, String display) {
         super();
         this.reference = reference;
+        this.display = display;
     }
 
     @JsonProperty("reference")
@@ -51,6 +56,16 @@ public class Result implements Serializable
     @JsonProperty("reference")
     public void setReference(String reference) {
         this.reference = reference;
+    }
+
+    @JsonProperty("display")
+    public String getDisplay() {
+        return display;
+    }
+
+    @JsonProperty("display")
+    public void setDisplay(String display) {
+        this.display = display;
     }
 
     @JsonAnyGetter
@@ -65,12 +80,12 @@ public class Result implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("reference", reference).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("reference", reference).append("display", display).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(reference).toHashCode();
+        return new HashCodeBuilder().append(additionalProperties).append(display).append(reference).toHashCode();
     }
 
     @Override
@@ -78,11 +93,11 @@ public class Result implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Result) == false) {
+        if ((other instanceof Actor) == false) {
             return false;
         }
-        Result rhs = ((Result) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(reference, rhs.reference).isEquals();
+        Actor rhs = ((Actor) other);
+        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(display, rhs.display).append(reference, rhs.reference).isEquals();
     }
 
 }

@@ -1,10 +1,8 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -18,41 +16,41 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "tag"
+    "actor"
 })
-public class Meta implements Serializable
+public class Performer_ implements Serializable
 {
 
-    @JsonProperty("tag")
-    private List<Tag> tag = new ArrayList<Tag>();
+    @JsonProperty("actor")
+    private Actor actor;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -7259486972747876423L;
+    private final static long serialVersionUID = 7957231763979584456L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Meta() {
+    public Performer_() {
     }
 
     /**
      * 
-     * @param tag
+     * @param actor
      */
-    public Meta(List<Tag> tag) {
+    public Performer_(Actor actor) {
         super();
-        this.tag = tag;
+        this.actor = actor;
     }
 
-    @JsonProperty("tag")
-    public List<Tag> getTag() {
-        return tag;
+    @JsonProperty("actor")
+    public Actor getActor() {
+        return actor;
     }
 
-    @JsonProperty("tag")
-    public void setTag(List<Tag> tag) {
-        this.tag = tag;
+    @JsonProperty("actor")
+    public void setActor(Actor actor) {
+        this.actor = actor;
     }
 
     @JsonAnyGetter
@@ -67,12 +65,12 @@ public class Meta implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("tag", tag).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("actor", actor).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(tag).toHashCode();
+        return new HashCodeBuilder().append(additionalProperties).append(actor).toHashCode();
     }
 
     @Override
@@ -80,11 +78,11 @@ public class Meta implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Meta) == false) {
+        if ((other instanceof Performer_) == false) {
             return false;
         }
-        Meta rhs = ((Meta) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(tag, rhs.tag).isEquals();
+        Performer_ rhs = ((Performer_) other);
+        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(actor, rhs.actor).isEquals();
     }
 
 }

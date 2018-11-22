@@ -1,5 +1,5 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,66 +16,41 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "value",
-    "unit",
     "system",
-    "code"
+    "code",
+    "display"
 })
-public class Low implements Serializable
+public class Tag implements Serializable
 {
 
-    @JsonProperty("value")
-    private Double value;
-    @JsonProperty("unit")
-    private String unit;
     @JsonProperty("system")
     private String system;
     @JsonProperty("code")
     private String code;
+    @JsonProperty("display")
+    private String display;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -4834727056500130791L;
+    private final static long serialVersionUID = -5333454750581484578L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Low() {
+    public Tag() {
     }
 
     /**
      * 
-     * @param unit
      * @param system
-     * @param value
+     * @param display
      * @param code
      */
-    public Low(Double value, String unit, String system, String code) {
+    public Tag(String system, String code, String display) {
         super();
-        this.value = value;
-        this.unit = unit;
         this.system = system;
         this.code = code;
-    }
-
-    @JsonProperty("value")
-    public Double getValue() {
-        return value;
-    }
-
-    @JsonProperty("value")
-    public void setValue(Double value) {
-        this.value = value;
-    }
-
-    @JsonProperty("unit")
-    public String getUnit() {
-        return unit;
-    }
-
-    @JsonProperty("unit")
-    public void setUnit(String unit) {
-        this.unit = unit;
+        this.display = display;
     }
 
     @JsonProperty("system")
@@ -98,6 +73,16 @@ public class Low implements Serializable
         this.code = code;
     }
 
+    @JsonProperty("display")
+    public String getDisplay() {
+        return display;
+    }
+
+    @JsonProperty("display")
+    public void setDisplay(String display) {
+        this.display = display;
+    }
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -110,12 +95,12 @@ public class Low implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("value", value).append("unit", unit).append("system", system).append("code", code).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("system", system).append("code", code).append("display", display).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(unit).append(system).append(additionalProperties).append(value).append(code).toHashCode();
+        return new HashCodeBuilder().append(system).append(additionalProperties).append(display).append(code).toHashCode();
     }
 
     @Override
@@ -123,11 +108,11 @@ public class Low implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Low) == false) {
+        if ((other instanceof Tag) == false) {
             return false;
         }
-        Low rhs = ((Low) other);
-        return new EqualsBuilder().append(unit, rhs.unit).append(system, rhs.system).append(additionalProperties, rhs.additionalProperties).append(value, rhs.value).append(code, rhs.code).isEquals();
+        Tag rhs = ((Tag) other);
+        return new EqualsBuilder().append(system, rhs.system).append(additionalProperties, rhs.additionalProperties).append(display, rhs.display).append(code, rhs.code).isEquals();
     }
 
 }

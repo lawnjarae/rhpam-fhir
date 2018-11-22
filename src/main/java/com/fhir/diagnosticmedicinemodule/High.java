@@ -1,5 +1,5 @@
 
-package com.hl7.diagnostic;
+package com.fhir.diagnosticmedicinemodule;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,41 +16,66 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+    "value",
+    "unit",
     "system",
-    "code",
-    "display"
+    "code"
 })
-public class Tag implements Serializable
+public class High implements Serializable
 {
 
+    @JsonProperty("value")
+    private Double value;
+    @JsonProperty("unit")
+    private String unit;
     @JsonProperty("system")
     private String system;
     @JsonProperty("code")
     private String code;
-    @JsonProperty("display")
-    private String display;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = -5333454750581484578L;
+    private final static long serialVersionUID = -3357539203723828518L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Tag() {
+    public High() {
     }
 
     /**
      * 
+     * @param unit
      * @param system
-     * @param display
+     * @param value
      * @param code
      */
-    public Tag(String system, String code, String display) {
+    public High(Double value, String unit, String system, String code) {
         super();
+        this.value = value;
+        this.unit = unit;
         this.system = system;
         this.code = code;
-        this.display = display;
+    }
+
+    @JsonProperty("value")
+    public Double getValue() {
+        return value;
+    }
+
+    @JsonProperty("value")
+    public void setValue(Double value) {
+        this.value = value;
+    }
+
+    @JsonProperty("unit")
+    public String getUnit() {
+        return unit;
+    }
+
+    @JsonProperty("unit")
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     @JsonProperty("system")
@@ -73,16 +98,6 @@ public class Tag implements Serializable
         this.code = code;
     }
 
-    @JsonProperty("display")
-    public String getDisplay() {
-        return display;
-    }
-
-    @JsonProperty("display")
-    public void setDisplay(String display) {
-        this.display = display;
-    }
-
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -95,12 +110,12 @@ public class Tag implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("system", system).append("code", code).append("display", display).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("value", value).append("unit", unit).append("system", system).append("code", code).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(system).append(additionalProperties).append(display).append(code).toHashCode();
+        return new HashCodeBuilder().append(unit).append(system).append(additionalProperties).append(value).append(code).toHashCode();
     }
 
     @Override
@@ -108,11 +123,11 @@ public class Tag implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Tag) == false) {
+        if ((other instanceof High) == false) {
             return false;
         }
-        Tag rhs = ((Tag) other);
-        return new EqualsBuilder().append(system, rhs.system).append(additionalProperties, rhs.additionalProperties).append(display, rhs.display).append(code, rhs.code).isEquals();
+        High rhs = ((High) other);
+        return new EqualsBuilder().append(unit, rhs.unit).append(system, rhs.system).append(additionalProperties, rhs.additionalProperties).append(value, rhs.value).append(code, rhs.code).isEquals();
     }
 
 }
