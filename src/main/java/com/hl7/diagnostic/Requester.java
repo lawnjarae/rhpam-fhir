@@ -16,41 +16,41 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "value"
+    "agent"
 })
-public class Identifier implements Serializable
+public class Requester implements Serializable
 {
 
-    @JsonProperty("value")
-    private String value;
+    @JsonProperty("agent")
+    private Agent agent;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 3432002080008295512L;
+    private final static long serialVersionUID = 1434905566902402012L;
 
     /**
      * No args constructor for use in serialization
      *
      */
-    public Identifier() {
+    public Requester() {
     }
 
     /**
      *
-     * @param value
+     * @param agent
      */
-    public Identifier(String value) {
+    public Requester(Agent agent) {
         super();
-        this.value = value;
+        this.agent = agent;
     }
 
-    @JsonProperty("value")
-    public String getValue() {
-        return value;
+    @JsonProperty("agent")
+    public Agent getAgent() {
+        return agent;
     }
 
-    @JsonProperty("value")
-    public void setValue(String value) {
-        this.value = value;
+    @JsonProperty("agent")
+    public void setAgent(Agent agent) {
+        this.agent = agent;
     }
 
     @JsonAnyGetter
@@ -65,12 +65,12 @@ public class Identifier implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("value", value).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("agent", agent).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(value).toHashCode();
+        return new HashCodeBuilder().append(additionalProperties).append(agent).toHashCode();
     }
 
     @Override
@@ -78,11 +78,11 @@ public class Identifier implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Identifier) == false) {
+        if ((other instanceof Requester) == false) {
             return false;
         }
-        Identifier rhs = ((Identifier) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(value, rhs.value).isEquals();
+        Requester rhs = ((Requester) other);
+        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(agent, rhs.agent).isEquals();
     }
 
 }

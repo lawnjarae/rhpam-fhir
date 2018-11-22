@@ -16,31 +16,46 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+    "system",
     "value"
 })
-public class Identifier implements Serializable
+public class Requisition implements Serializable
 {
 
+    @JsonProperty("system")
+    private String system;
     @JsonProperty("value")
     private String value;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 3432002080008295512L;
+    private final static long serialVersionUID = -7788549807436696656L;
 
     /**
      * No args constructor for use in serialization
      *
      */
-    public Identifier() {
+    public Requisition() {
     }
 
     /**
      *
+     * @param system
      * @param value
      */
-    public Identifier(String value) {
+    public Requisition(String system, String value) {
         super();
+        this.system = system;
         this.value = value;
+    }
+
+    @JsonProperty("system")
+    public String getSystem() {
+        return system;
+    }
+
+    @JsonProperty("system")
+    public void setSystem(String system) {
+        this.system = system;
     }
 
     @JsonProperty("value")
@@ -65,12 +80,12 @@ public class Identifier implements Serializable
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("value", value).append("additionalProperties", additionalProperties).toString();
+        return new ToStringBuilder(this).append("system", system).append("value", value).append("additionalProperties", additionalProperties).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(additionalProperties).append(value).toHashCode();
+        return new HashCodeBuilder().append(system).append(additionalProperties).append(value).toHashCode();
     }
 
     @Override
@@ -78,11 +93,11 @@ public class Identifier implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Identifier) == false) {
+        if ((other instanceof Requisition) == false) {
             return false;
         }
-        Identifier rhs = ((Identifier) other);
-        return new EqualsBuilder().append(additionalProperties, rhs.additionalProperties).append(value, rhs.value).isEquals();
+        Requisition rhs = ((Requisition) other);
+        return new EqualsBuilder().append(system, rhs.system).append(additionalProperties, rhs.additionalProperties).append(value, rhs.value).isEquals();
     }
 
 }
