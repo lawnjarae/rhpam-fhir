@@ -1,0 +1,8 @@
+package com.hl7.diagnostic;
+
+rule "Print Diagnostic Report"
+when
+    $dr: DiagnosticReport()
+then
+    System.out.println($dr.toString());
+end
