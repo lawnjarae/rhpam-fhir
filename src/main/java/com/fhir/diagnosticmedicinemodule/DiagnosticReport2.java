@@ -24,36 +24,8 @@ public class DiagnosticReport2 implements Serializable {
 
 	@com.fasterxml.jackson.annotation.JsonProperty("resourceType")
 	private String resourceType;
-	@com.fasterxml.jackson.annotation.JsonProperty("id")
-	private String id;
-	@com.fasterxml.jackson.annotation.JsonProperty("meta")
-	private Meta meta;
-	@com.fasterxml.jackson.annotation.JsonProperty("text")
-	private Text text;
-	@com.fasterxml.jackson.annotation.JsonProperty("contained")
-	private List<Contained> contained = new ArrayList<Contained>();
-	@com.fasterxml.jackson.annotation.JsonProperty("identifier")
-	private List<Identifier> identifier = new ArrayList<Identifier>();
 	@com.fasterxml.jackson.annotation.JsonProperty("status")
 	private String status;
-	@com.fasterxml.jackson.annotation.JsonProperty("category")
-	private Category category;
-	@com.fasterxml.jackson.annotation.JsonProperty("code")
-	private Code code;
-	@com.fasterxml.jackson.annotation.JsonProperty("subject")
-	private Subject subject;
-	@com.fasterxml.jackson.annotation.JsonProperty("context")
-	private Context context;
-	@com.fasterxml.jackson.annotation.JsonProperty("effectiveDateTime")
-	private String effectiveDateTime;
-	@com.fasterxml.jackson.annotation.JsonProperty("issued")
-	private String issued;
-	@com.fasterxml.jackson.annotation.JsonProperty("performer")
-	private List<Performer_> performer = new ArrayList<Performer_>();
-	@com.fasterxml.jackson.annotation.JsonProperty("result")
-	private List<Result> result = new ArrayList<Result>();
-	@com.fasterxml.jackson.annotation.JsonProperty("presentedForm")
-	private List<PresentedForm> presentedForm = new ArrayList<PresentedForm>();
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 	private final static long serialVersionUID = -6988836822536246194L;
@@ -121,56 +93,6 @@ public class DiagnosticReport2 implements Serializable {
 		this.resourceType = resourceType;
 	}
 
-	@JsonProperty("id")
-	public String getId() {
-		return id;
-	}
-
-	@JsonProperty("id")
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	@JsonProperty("meta")
-	public Meta getMeta() {
-		return meta;
-	}
-
-	@JsonProperty("meta")
-	public void setMeta(Meta meta) {
-		this.meta = meta;
-	}
-
-	@JsonProperty("text")
-	public Text getText() {
-		return text;
-	}
-
-	@JsonProperty("text")
-	public void setText(Text text) {
-		this.text = text;
-	}
-
-	@JsonProperty("contained")
-	public List<Contained> getContained() {
-		return contained;
-	}
-
-	@JsonProperty("contained")
-	public void setContained(List<Contained> contained) {
-		this.contained = contained;
-	}
-
-	@JsonProperty("identifier")
-	public List<Identifier> getIdentifier() {
-		return identifier;
-	}
-
-	@JsonProperty("identifier")
-	public void setIdentifier(List<Identifier> identifier) {
-		this.identifier = identifier;
-	}
-
 	@JsonProperty("status")
 	public String getStatus() {
 		return status;
@@ -179,96 +101,6 @@ public class DiagnosticReport2 implements Serializable {
 	@JsonProperty("status")
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	@JsonProperty("category")
-	public Category getCategory() {
-		return category;
-	}
-
-	@JsonProperty("category")
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	@JsonProperty("code")
-	public Code getCode() {
-		return code;
-	}
-
-	@JsonProperty("code")
-	public void setCode(Code code) {
-		this.code = code;
-	}
-
-	@JsonProperty("subject")
-	public Subject getSubject() {
-		return subject;
-	}
-
-	@JsonProperty("subject")
-	public void setSubject(Subject subject) {
-		this.subject = subject;
-	}
-
-	@JsonProperty("context")
-	public Context getContext() {
-		return context;
-	}
-
-	@JsonProperty("context")
-	public void setContext(Context context) {
-		this.context = context;
-	}
-
-	@JsonProperty("effectiveDateTime")
-	public String getEffectiveDateTime() {
-		return effectiveDateTime;
-	}
-
-	@JsonProperty("effectiveDateTime")
-	public void setEffectiveDateTime(String effectiveDateTime) {
-		this.effectiveDateTime = effectiveDateTime;
-	}
-
-	@JsonProperty("issued")
-	public String getIssued() {
-		return issued;
-	}
-
-	@JsonProperty("issued")
-	public void setIssued(String issued) {
-		this.issued = issued;
-	}
-
-	@JsonProperty("performer")
-	public List<Performer_> getPerformer() {
-		return performer;
-	}
-
-	@JsonProperty("performer")
-	public void setPerformer(List<Performer_> performer) {
-		this.performer = performer;
-	}
-
-	@JsonProperty("result")
-	public List<Result> getResult() {
-		return result;
-	}
-
-	@JsonProperty("result")
-	public void setResult(List<Result> result) {
-		this.result = result;
-	}
-
-	@JsonProperty("presentedForm")
-	public List<PresentedForm> getPresentedForm() {
-		return presentedForm;
-	}
-
-	@JsonProperty("presentedForm")
-	public void setPresentedForm(List<PresentedForm> presentedForm) {
-		this.presentedForm = presentedForm;
 	}
 
 	@JsonAnyGetter
@@ -305,40 +137,10 @@ public class DiagnosticReport2 implements Serializable {
 		this.conclusion = conclusion;
 	}
 
-	public DiagnosticReport2(
-			java.lang.String resourceType,
-			java.lang.String id,
-			com.fhir.diagnosticmedicinemodule.Meta meta,
-			com.fhir.diagnosticmedicinemodule.Text text,
-			java.util.List<com.fhir.diagnosticmedicinemodule.Contained> contained,
-			java.util.List<com.fhir.diagnosticmedicinemodule.Identifier> identifier,
-			java.lang.String status,
-			com.fhir.diagnosticmedicinemodule.Category category,
-			com.fhir.diagnosticmedicinemodule.Code code,
-			com.fhir.diagnosticmedicinemodule.Subject subject,
-			com.fhir.diagnosticmedicinemodule.Context context,
-			java.lang.String effectiveDateTime,
-			java.lang.String issued,
-			java.util.List<com.fhir.diagnosticmedicinemodule.Performer_> performer,
-			java.util.List<com.fhir.diagnosticmedicinemodule.Result> result,
-			java.util.List<com.fhir.diagnosticmedicinemodule.PresentedForm> presentedForm,
-			java.lang.String conclusion) {
+	public DiagnosticReport2(java.lang.String resourceType,
+			java.lang.String status, java.lang.String conclusion) {
 		this.resourceType = resourceType;
-		this.id = id;
-		this.meta = meta;
-		this.text = text;
-		this.contained = contained;
-		this.identifier = identifier;
 		this.status = status;
-		this.category = category;
-		this.code = code;
-		this.subject = subject;
-		this.context = context;
-		this.effectiveDateTime = effectiveDateTime;
-		this.issued = issued;
-		this.performer = performer;
-		this.result = result;
-		this.presentedForm = presentedForm;
 		this.conclusion = conclusion;
 	}
 
