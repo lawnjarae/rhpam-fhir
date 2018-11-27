@@ -58,6 +58,8 @@ public class DiagnosticReport2 implements Serializable {
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 	private final static long serialVersionUID = -6988836822536246194L;
 
+	private java.lang.String conclusion;
+
 	/**
 	 * No args constructor for use in serialization
 	 * 
@@ -293,6 +295,51 @@ public class DiagnosticReport2 implements Serializable {
 				.append("presentedForm", presentedForm)
 				.append("additionalProperties", additionalProperties)
 				.toString();
+	}
+
+	public java.lang.String getConclusion() {
+		return this.conclusion;
+	}
+
+	public void setConclusion(java.lang.String conclusion) {
+		this.conclusion = conclusion;
+	}
+
+	public DiagnosticReport2(
+			java.lang.String resourceType,
+			java.lang.String id,
+			com.fhir.diagnosticmedicinemodule.Meta meta,
+			com.fhir.diagnosticmedicinemodule.Text text,
+			java.util.List<com.fhir.diagnosticmedicinemodule.Contained> contained,
+			java.util.List<com.fhir.diagnosticmedicinemodule.Identifier> identifier,
+			java.lang.String status,
+			com.fhir.diagnosticmedicinemodule.Category category,
+			com.fhir.diagnosticmedicinemodule.Code code,
+			com.fhir.diagnosticmedicinemodule.Subject subject,
+			com.fhir.diagnosticmedicinemodule.Context context,
+			java.lang.String effectiveDateTime,
+			java.lang.String issued,
+			java.util.List<com.fhir.diagnosticmedicinemodule.Performer_> performer,
+			java.util.List<com.fhir.diagnosticmedicinemodule.Result> result,
+			java.util.List<com.fhir.diagnosticmedicinemodule.PresentedForm> presentedForm,
+			java.lang.String conclusion) {
+		this.resourceType = resourceType;
+		this.id = id;
+		this.meta = meta;
+		this.text = text;
+		this.contained = contained;
+		this.identifier = identifier;
+		this.status = status;
+		this.category = category;
+		this.code = code;
+		this.subject = subject;
+		this.context = context;
+		this.effectiveDateTime = effectiveDateTime;
+		this.issued = issued;
+		this.performer = performer;
+		this.result = result;
+		this.presentedForm = presentedForm;
+		this.conclusion = conclusion;
 	}
 
 }
