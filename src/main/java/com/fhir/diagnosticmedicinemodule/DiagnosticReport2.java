@@ -39,49 +39,6 @@ public class DiagnosticReport2 implements Serializable {
 	public DiagnosticReport2() {
 	}
 
-	/**
-	 * 
-	 * @param id
-	 * @param result
-	 * @param category
-	 * @param text
-	 * @param effectiveDateTime
-	 * @param status
-	 * @param subject
-	 * @param issued
-	 * @param context
-	 * @param performer
-	 * @param contained
-	 * @param code
-	 * @param presentedForm
-	 * @param identifier
-	 * @param meta
-	 * @param resourceType
-	 */
-	public DiagnosticReport2(String resourceType, String id, Meta meta,
-			Text text, List<Contained> contained, List<Identifier> identifier,
-			String status, Category category, Code code, Subject subject,
-			Context context, String effectiveDateTime, String issued,
-			List<Performer_> performer, List<Result> result,
-			List<PresentedForm> presentedForm) {
-		super();
-		this.resourceType = resourceType;
-		this.id = id;
-		this.meta = meta;
-		this.text = text;
-		this.contained = contained;
-		this.identifier = identifier;
-		this.status = status;
-		this.category = category;
-		this.code = code;
-		this.subject = subject;
-		this.context = context;
-		this.effectiveDateTime = effectiveDateTime;
-		this.issued = issued;
-		this.performer = performer;
-		this.result = result;
-		this.presentedForm = presentedForm;
-	}
 
 	@JsonProperty("resourceType")
 	public String getResourceType() {
@@ -115,17 +72,8 @@ public class DiagnosticReport2 implements Serializable {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("resourceType", resourceType)
-				.append("id", id).append("meta", meta).append("text", text)
-				.append("contained", contained)
-				.append("identifier", identifier).append("status", status)
-				.append("category", category).append("code", code)
-				.append("subject", subject).append("context", context)
-				.append("effectiveDateTime", effectiveDateTime)
-				.append("issued", issued).append("performer", performer)
-				.append("result", result)
-				.append("presentedForm", presentedForm)
-				.append("additionalProperties", additionalProperties)
+		return new ToStringBuilder(this).append("resourceType", resourceType).append("status", status)
+				.append("conclusion", conclusion)
 				.toString();
 	}
 
