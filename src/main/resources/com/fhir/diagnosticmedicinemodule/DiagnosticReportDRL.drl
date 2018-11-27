@@ -6,3 +6,10 @@ when
 then
     System.out.println($dr.toString());
 end
+
+rule "Print Diagnostic Report 2"
+when
+    $dr: DiagnosticReport2()
+then
+    System.out.println($dr.toString());
+end
